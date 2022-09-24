@@ -1,4 +1,3 @@
-# Write your code below game_hash
 def game_hash
   {
     home: {
@@ -126,4 +125,82 @@ def game_hash
   }
 end
 
-# Write code here
+def num_points_scored(name)
+  game_hash.each do | key, value|
+    value.each do |homeaway, values|
+      if homeaway == :players
+        values.each do |player, p_value|
+          if player[:player_name] == name
+            puts player[:points]
+          end
+          # puts "Player #{player} PlayerValue #{player[:player_name]}"
+        end
+      end
+    end
+  end
+end
+
+def shoe_size(name)
+  game_hash.each do | key, value|
+    value.each do |homeaway, values|
+      if homeaway == :players
+        values.each do |player, p_value|
+          if player[:player_name] == name
+            puts player[:shoe]
+          end
+          # puts "Player #{player} PlayerValue #{player[:player_name]}"
+        end
+      end
+    end
+  end
+end
+
+
+def team_colors(name)
+  game_hash.each do | key, value|
+    if value[:team_name] == name
+      p value[:colors]
+    end
+  end
+end
+
+def team_names
+  teams = []
+  game_hash.each do | key, value|
+    teams << value[:team_name]
+  end
+  p teams
+end
+
+def player_numbers(name)
+  player_nums = []
+  game_hash.each do | key, value|
+    if value[:team_name] == name
+      value.each do |homeaway, values|
+        if homeaway == :players
+          values.each do |player, p_value|
+              player_nums << player[:number]
+          end
+        end
+      end
+    end
+  end
+  p player_nums.sort
+end
+
+def player_stats(name)
+  game_hash.each do | key, value|
+    value.each do |homeaway, values|
+      if homeaway == :players
+        values.each do |player, p_value|
+          if player[:player_name] == name
+            p player
+          end
+          # puts "Player #{player} PlayerValue #{player[:player_name]}"
+        end
+      end
+    end
+  end
+end
+
+
